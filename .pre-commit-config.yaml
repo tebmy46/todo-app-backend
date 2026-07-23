@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check --fix
+        entry: todo-app-backend/.venv/Scripts/ruff.exe check todo-app-backend --config todo-app-backend/pyproject.toml --fix
+        language: system
+        pass_filenames: false
+        types_or: [python]
+
+      - id: ruff-format
+        name: ruff format
+        entry: todo-app-backend/.venv/Scripts/ruff.exe format todo-app-backend --config todo-app-backend/pyproject.toml
+        language: system
+        pass_filenames: false
+        types_or: [python]
+
+      - id: mypy
+        name: mypy
+        entry: todo-app-backend/.venv/Scripts/mypy.exe --config-file todo-app-backend/pyproject.toml todo-app-backend/app
+        language: system
+        pass_filenames: false
+        types_or: [python]
