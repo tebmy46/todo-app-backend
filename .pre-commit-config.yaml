@@ -21,3 +21,10 @@ repos:
         language: system
         pass_filenames: false
         types_or: [python]
+
+      - id: pytest
+        name: pytest
+        entry: todo-app-backend/.venv/Scripts/python.exe -m pytest -c todo-app-backend/pyproject.toml todo-app-backend/app/tests
+        language: system
+        pass_filenames: false
+        types_or: [python]

@@ -1,4 +1,3 @@
-from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.repositories.task import TaskRepository
@@ -28,7 +27,7 @@ class TaskService:
         task_for_update = self.task_repository.get_by_id(task_id=task_id)
         # 2. Если задачи нет — сразу выбрасываем 404.
         if task_for_update is None:
-            raise HTTPException(status_code=404, detail="Task not found")
+            raise TaskNotFound
         # 3. Обновляем поля (если они переданы)
         if task_update.title is not None:
             task_for_update.title = task_update.title
@@ -42,7 +41,7 @@ class TaskService:
         task_for_delete = self.task_repository.get_by_id(task_id=task_id)
 
         if task_for_delete is None:
-            raise HTTPException(status_code=404, detail="Task not found")
+            raise TaskNotFound
 
         self.task_repository.delete(task_for_delete)
         self.db.commit()
