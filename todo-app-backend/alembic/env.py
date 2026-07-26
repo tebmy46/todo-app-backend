@@ -1,11 +1,12 @@
 from logging.config import fileConfig
 
 from alembic import context
+from sqlalchemy import engine_from_config, pool
+
 from app.core.config import get_settings
 from app.models.base import Base
 from app.models.category import CategoryORM  # noqa: F401
 from app.models.task import TaskORM  # noqa: F401
-from sqlalchemy import engine_from_config, pool
 
 config = context.config
 config.set_main_option(

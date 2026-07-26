@@ -5,6 +5,9 @@ line-length = 88
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
@@ -12,20 +15,13 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.mypy]
-# Какие каталоги проверять по умолчанию
 files = ["app"]
-# Под какую версию Python проверять типы
 python_version = "3.13"
-# Проверять даже тела функций без полной типизации
 check_untyped_defs = true
-# Показывать коды ошибок рядом с сообщениями
 show_error_codes = true
-# Предупреждать о лишних type: ignore
 warn_unused_ignores = true
-# Не падать на внешних библиотеках без type stubs
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["app/tests"]
-

@@ -1,9 +1,10 @@
 from unittest.mock import Mock
 
 import pytest
+from sqlalchemy.orm import Session
+
 from app.repositories.task import TaskRepository
 from app.services.task import TaskService
-from sqlalchemy.orm import Session
 
 
 @pytest.fixture
